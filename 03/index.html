@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #trg {
+            width: 200px;
+            height: 200px;
+            background: #000;
+        }
+
+        #b1 {
+            height: 400px;
+            width: 400px;
+            background: red;
+        }
+
+        #b2 {
+            height: 300px;
+            width: 300px;
+            background: blue;
+        }
+
+        #b3 {
+            height: 200px;
+            width: 200px;
+            background: green;
+        }
+
+    </style>
+</head>
+<body>
+
+<button onclick="(function () {
+  console.log('gavnokod ver 1');
+}())">push
+</button>
+
+<button onclick="asd()">push 1</button>
+
+<button id="btn">push 2</button>
+
+<div id="trg"></div>
+
+<div id="b1">
+    <div id="b2">
+        <div id="b3"></div>
+    </div>
+</div>
+
+<input type="text" id="inn">
+<p id="par"></p>
+
+<script>
+
+    let inn = document.getElementById("inn");
+    let par = document.getElementById("par");
+    inn.oninput = function () {
+        par.innerText = this.value;
+    }
+
+    function asd() {
+        console.log('gavnokod ver 2');
+    }
+
+    var btn = document.getElementById("btn");
+    btn.onclick = function () {
+        console.log('NOT gavnokod');
+    }
+
+    //    var trg = document.getElementById("trg");
+    //    trg.onmouseover = function (e) {
+    //        this.style.background = "red";
+    //        console.log(e);
+    //    }
+
+    //    trg.onmousemove = function (e) {
+    //        console.log(e.pageX, e.pageY);
+    //        this.style.background = `rgb(${e.pageX}, ${e.pageY}, ${e.pageX + e.pageY})`;
+    //
+    //    }
+
+    trg.onmousedown = function (emd) {
+        var self = this;
+        self.style.position = 'absolute';
+        document.onmousemove = function (emn) {
+            self.style.top = emn.pageY + 'px';
+            self.style.left = emn.pageX + 'px';
+        }
+    }
+
+    trg.onmouseup = function () {
+        document.onmousemove = null;
+    }
+
+//    b1.addEventListener('click', function () {
+//        console.log("b1")
+//    }, true);
+//    b2.addEventListener('click', function () {
+//        console.log("b2")
+//    }, true);
+//    b3.addEventListener('click', function () {
+//        console.log("b3")
+//    }, true);
+
+    b1.addEventListener('click', function () {
+        console.log("b1")
+    }, false);
+    b2.addEventListener('click', function () {
+        console.log("b2")
+    }, false);
+    b3.addEventListener('click', function () {
+        console.log("b3")
+    }, false);
+
+
+
+</script>
+
+</body>
+</html>
