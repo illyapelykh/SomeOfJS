@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h1 id="head">hello</h1>
+<h1 id="head">hi!</h1>
+<div class="trg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam distinctio fugit hic impedit ipsa
+    molestias nemo quia suscipit. Aperiam architecto atque beatae consequatur consequuntur earum est quas reiciendis,
+    repellendus vel!
+</div>
+<div class="trg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cum distinctio dolore, est excepturi
+    facilis quibusdam! Accusamus assumenda debitis dolorum eius laborum nesciunt, non nulla, quae tempora veritatis vero
+    voluptatibus!
+</div>
+
+<script>
+    var head = document.getElementById('head');
+    var $head = $("#head");
+    $head
+        .css("background", "red")
+        .css("color", "blue")
+        .width(300)
+        .height("300px")
+        .attr("class", "azazello");
+
+    console.log($head.css("background"));
+    console.log($head);
+
+    var $div = $("body div");
+    console.log($div);
+
+    var options = {
+        background: 'red',
+        color: "green",
+        marginTop: 50
+    };
+
+    $div.css(options);
+
+    $("h1").css("font-size", function (i, prop) {
+        console.log(i, prop);
+        if ($(this).text().includes("hi")) return "3em";
+        else return 10;
+    });
+
+    $("div").css({
+        background: function () {
+            if ($(this).text().includes("hi")) return "black";
+            else return "yellow";
+        },
+        color: function () {
+            if ($(this).text().includes("velit")) return "silver";
+            else return "white";
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
